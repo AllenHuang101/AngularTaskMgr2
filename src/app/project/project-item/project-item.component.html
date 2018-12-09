@@ -1,0 +1,22 @@
+<md-card>
+  <md-card-header>
+    <md-card-title>
+      {{item.name}}
+    </md-card-title>
+  </md-card-header>
+  <img md-card-image [src]="item.coverImg" alt="项目封面" />
+  <md-card-content>
+    {{item.desc}}
+  </md-card-content>
+  <md-card-actions>
+  <button md-button type="button" (click)="onEditClick()">
+    <span>编辑</span>
+  </button>
+  <button md-button type="button" (click)="onInviteClick()">
+    <span>邀请</span>
+  </button>
+  <button md-button type="button" (click)="onDelClick()">
+    <span>删除</span>
+  </button>
+  </md-card-actions>
+</md-card>

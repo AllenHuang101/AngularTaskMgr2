@@ -1,0 +1,25 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit(form,$event)">
+  <md-card>
+      <md-card-header>
+        <div md-card-avatar class="example-header-image"></div>
+        <md-card-title>用户登录</md-card-title>
+      </md-card-header>
+      <img md-card-image src="{{quote.pic}}" alt="Photo of a Shiba Inu">
+      <md-card-content>
+        <md-input-container class="full-width">
+          <input mdInput type="text" placeholder="邮箱" formControlName="email">
+        </md-input-container>
+        <md-input-container class="full-width">
+          <input mdInput type="password" placeholder="密码" formControlName="password">
+        </md-input-container>
+        <button md-raised-button type="submit" color="accent" [disabled]="!form.valid">登录</button>
+        <p>
+            {{quote.cn}}
+          </p>
+      </md-card-content>
+      <md-card-actions>
+        <button md-mini-fab type="button" routerLink="/register">注册</button>
+        <button md-mini-fab type="button">找回</button>
+      </md-card-actions>
+    </md-card>
+</form>

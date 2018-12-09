@@ -1,0 +1,12 @@
+<div class="task-lists">
+  <app-task-list app-droppable [dragEnterClass]="'drag-enter'" *ngFor="let list of lists" class="list-container">
+    <app-task-header [header]="list.name" (newTask)="launchNewTaskDialog()" (moveAll)="launchCopyTaskDialog()"
+      (delList)="launchConfirmDialog()" (onEditList)="launchEditListDialog()"></app-task-header>
+    <app-task-item (taskClick)="launchUpdateTaskDialog(task)" *ngFor="let task of list.tasks" [item]="task">
+
+    </app-task-item>
+  </app-task-list>
+</div>
+<button class="fab-button" md-fab type="button" (click)="launchNewListDialog()">
+  <md-icon>add</md-icon>
+</button>
