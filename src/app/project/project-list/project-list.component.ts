@@ -2,6 +2,7 @@ import { ChangeDetectionStrategy, ChangeDetectorRef, Component, HostBinding, OnI
 import { MdDialog } from '@angular/material';
 import { listAnimation } from '../../anims/list.anim';
 import { slideToRight } from '../../anims/router.anim';
+import { ProjectService } from '../../services/project.service';
 import { ConfirmDialogComponent } from '../../shared/confirm-dialog/confirm-dialog.component';
 import { InviteComponent } from '../invite/invite.component';
 import { NewProjectComponent } from '../new-project/new-project.component';
@@ -20,26 +21,14 @@ export class ProjectListComponent implements OnInit {
 
   @HostBinding("@routeAnim") state;
 
-  projects = [
-    {
-      "id": 1,
-      "name": "企业协作平台",
-      "desc": "这是一个企业内部项目",
-      "coverImg": "assets/img/covers/0.jpg"
-    },
-    {
-      "id": 2,
-      "name": "企业协作平台",
-      "desc": "这是一个企业内部项目",
-      "coverImg": "assets/img/covers/0.jpg"
-    }
+  projects: any[];
 
-  ];
-
-  constructor(private dialog: MdDialog, private cd: ChangeDetectorRef) { }
+  constructor(private dialog: MdDialog, private cd: ChangeDetectorRef, private service$: ProjectService) { }
 
   ngOnInit() {
+    this.service$.get("1").subscribe(projects => this.projects = projects);
   }
+
   openNewProjectDialog() {
     const dialogRef = this.dialog.open(NewProjectComponent, { data: { title: '新增项目' } });
     dialogRef.afterClosed().subscribe(result => {
